@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compliance Audit System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script>
+        (function(){
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect != location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        const App = () => {
+            const [activeTab, setActiveTab] = React.useState('overview');
+            return React.createElement('div', { className: 'min-h-screen bg-gray-50 p-8' },
+                React.createElement('div', { className: 'max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6' },
+                    React.createElement('h1', { className: 'text-3xl font-bold mb-4' }, 'Compliance Audit System'),
+                    React.createElement('p', { className: 'text-gray-600' }, 'Welcome to your compliance management dashboard')
+                )
+            );
+        };
+        root.render(React.createElement(App));
+    </script>
+</body>
+</html>
